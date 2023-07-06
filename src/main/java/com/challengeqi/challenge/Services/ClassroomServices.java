@@ -30,5 +30,7 @@ public class ClassroomServices {
         classroomRepo.deleteById(id); 
     }
 
-
+    public void deleteProffesor(Long id, Long idProfessor) {
+        classroomRepo.deleteById(id); 
+    }
 }
