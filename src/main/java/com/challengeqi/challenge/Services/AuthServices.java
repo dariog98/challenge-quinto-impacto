@@ -30,6 +30,7 @@ public class AuthServices {
         UserDetails user = userRepo.findByUsername(request.getUsername()).orElseThrow();
         String token = jwtService.getToken(user);
         return AuthResponse.builder()
+            .username(user.getUsername())
             .token(token)
             .build();
     }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.challengeqi.challenge.Dtos.ClassroomBasicDto;
@@ -28,9 +29,9 @@ public class ClassroomController {
     ClassroomServices classroomServices;
 
     @GetMapping
-    public ResponseEntity<Object> getClassrooms() {
+    public ResponseEntity<Object> getClassrooms(@RequestParam(required = false, defaultValue = "") String description) {
         try {
-            List<ClassroomBasicDto> classrooms = classroomServices.getClassrooms();
+            List<ClassroomBasicDto> classrooms = classroomServices.getClassrooms(description);
             return ResponseHandler.generateResponse("Request made successfully", HttpStatus.OK, classrooms);
         } catch (Exception error) {
             return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);

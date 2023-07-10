@@ -15,10 +15,10 @@ import com.challengeqi.challenge.Filter.JwtAuthenticationFilter;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    //@Autowired
-    //private JwtAuthenticationFilter jwtAuthenticationFilter;
-    //@Autowired
-    //private AuthenticationProvider authProvider;
+    @Autowired
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+    @Autowired
+    private AuthenticationProvider authProvider;
     
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -28,15 +28,16 @@ public class SecurityConfig {
             )
             .authorizeHttpRequests(authRequest ->
                 authRequest
-                    //.requestMatchers("/api/auth/**").permitAll()
-                    .anyRequest().permitAll()
+                    .requestMatchers("/api/auth/**").permitAll()
+                    //.anyRequest().permitAll()
+                    .anyRequest().authenticated()
             )
             .sessionManagement(sessionManager ->
                 sessionManager
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
-            //.authenticationProvider(authProvider)
-            //.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+            .authenticationProvider(authProvider)
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
             .build();
     }
 }

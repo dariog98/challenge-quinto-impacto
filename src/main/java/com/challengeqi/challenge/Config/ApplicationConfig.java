@@ -38,6 +38,7 @@ public class ApplicationConfig {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
     public UserDetailsService userDetailsService() {
         return username -> userRepo.findByUsername(username)
         .orElseThrow(() -> new UsernameNotFoundException("User nor found"));
