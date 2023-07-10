@@ -38,4 +38,14 @@ public class StudentController {
     public void deleteStudent(@PathVariable Long id) {
         studentServices.deleteStudent(id);
     }
+
+    @PostMapping(value = "api/students/{id}/classrooms/{idClassroom}")
+    public void addClassroom(@PathVariable Long id, @PathVariable Long idClassroom) {
+        studentServices.addClassroom(id, idClassroom);
+    }
+
+    @DeleteMapping(value = "api/students/{id}/classrooms/{idClassroom}")
+    public void removeClassroom(@PathVariable Long id, @PathVariable Long idClassroom) {
+        studentServices.removeClassroom(id, idClassroom);
+    }
 }

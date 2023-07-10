@@ -38,4 +38,14 @@ public class ProfessorController {
     public void deleteProfessor(@PathVariable Long id) {
         professorServices.deleteProfessor(id);
     }
+
+    @PostMapping(value = "api/professors/{id}/classrooms/{idClassroom}")
+    public void addClassroom(@PathVariable Long id, @PathVariable Long idClassroom) {
+        professorServices.addClassroom(id, idClassroom);
+    }
+
+    @DeleteMapping(value = "api/professors/{id}/classrooms/{idClassroom}")
+    public void removeClassroom(@PathVariable Long id, @PathVariable Long idClassroom) {
+        professorServices.removeClassroom(id, idClassroom);
+    }
 }

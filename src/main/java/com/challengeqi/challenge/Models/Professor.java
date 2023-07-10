@@ -1,10 +1,13 @@
 package com.challengeqi.challenge.Models;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,4 +33,7 @@ public class Professor {
     private String phone;
     @Column(name = "address")
     private String address;
+
+    //@OneToMany
+    //private List<Classroom> classrooms;
 }
