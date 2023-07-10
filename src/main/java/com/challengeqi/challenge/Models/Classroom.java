@@ -2,14 +2,13 @@ package com.challengeqi.challenge.Models;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -29,12 +28,11 @@ public class Classroom {
     @Column(name = "description")
     private String description;
     
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "student_class", joinColumns = @JoinColumn(name="id_class"), inverseJoinColumns = @JoinColumn(name = "id_student"))
+    @ManyToMany(mappedBy = "classrooms", fetch = FetchType.LAZY)
     private List<Student> students;
 
-    @ManyToOne
-    @JoinColumn(name = "professor_id", nullable = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "professor_id")
     private Professor professor;
 
     public void addStudent(Student student) {

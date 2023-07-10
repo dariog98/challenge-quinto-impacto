@@ -1,6 +1,5 @@
 package com.challengeqi.challenge.Models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -38,7 +37,7 @@ public class Student {
     @Column(name = "address")
     private String address;
 
-    //@ManyToMany(cascade = CascadeType.ALL)
-    //@JoinTable(name = "student_class", joinColumns = @JoinColumn(name="id_student"), inverseJoinColumns = @JoinColumn(name = "id_class"))
-    //private List<Classroom> classrooms;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "student_class", joinColumns = @JoinColumn(name="id_student"), inverseJoinColumns = @JoinColumn(name = "id_class"))
+    private List<Classroom> classrooms;
 }
