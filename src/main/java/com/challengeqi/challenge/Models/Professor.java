@@ -4,16 +4,20 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter @Setter @ToString
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "professor")
 public class Professor {
@@ -34,6 +38,7 @@ public class Professor {
     @Column(name = "address")
     private String address;
 
-    //@OneToMany
-    //private List<Classroom> classrooms;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "professor_id")
+    private List<Classroom> classrooms;
 }
