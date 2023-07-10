@@ -24,8 +24,9 @@ public class ClassroomServices {
         return classroomRepo.save(classroom); 
     }
 
-    public List<ClassroomBasicDto> getClassrooms() {
-        List<Classroom> classrooms = classroomRepo.findAll();
+    public List<ClassroomBasicDto> getClassrooms(String description) {
+        //List<Classroom> classrooms = classroomRepo.findAll();
+        List<Classroom> classrooms = classroomRepo.findByDescriptionLike(description);
         List<ClassroomBasicDto> classroomDtos = modelMapper.map(classrooms, new TypeToken<List<ClassroomBasicDto>>() {}.getType());
         return classroomDtos;
     }

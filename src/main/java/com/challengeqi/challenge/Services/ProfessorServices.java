@@ -28,8 +28,8 @@ public class ProfessorServices {
         return professorRepo.save(professor); 
     }
 
-    public List<ProfessorBasicDto> getProfessors() {
-        List<Professor> professors =  professorRepo.findAll();
+    public List<ProfessorBasicDto> getProfessors(String name) {
+        List<Professor> professors =  professorRepo.findByNamesLike(name);
         List<ProfessorBasicDto> professorDtos = modelMapper.map(professors, new TypeToken<List<ProfessorBasicDto>>() {}.getType());
         return professorDtos;
     }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.challengeqi.challenge.Dtos.ProfessorBasicDto;
@@ -30,9 +31,9 @@ public class ProfessorController {
     ProfessorServices professorServices;
 
     @GetMapping
-    public ResponseEntity<Object> getProfessors() {
+    public ResponseEntity<Object> getProfessors(@RequestParam(required = false, defaultValue = "") String name) {
         try {
-            List<ProfessorBasicDto> professors = professorServices.getProfessors();
+            List<ProfessorBasicDto> professors = professorServices.getProfessors(name);
             return ResponseHandler.generateResponse("Request made successfully", HttpStatus.OK, professors);
         } catch (Exception error) {
             return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);

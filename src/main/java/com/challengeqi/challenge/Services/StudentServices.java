@@ -29,8 +29,6 @@ public class StudentServices {
     }
 
     public List<StudentBasicDto> getStudents(String name, Long idClass) {
-        //List<Student> students = studentRepo.findAll();
-        //List<Student> students = studentRepo.findByNamesLike(name);
         List<Student> students;
         if (idClass != null) {
             students = studentRepo.findByNamesLikeAndClass(name, idClass);
