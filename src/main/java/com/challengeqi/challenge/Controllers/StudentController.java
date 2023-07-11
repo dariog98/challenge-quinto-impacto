@@ -41,8 +41,13 @@ public class StudentController {
     }
 
     @PostMapping
-    public void createStudent(@RequestBody Student student) {
-        studentServices.createStudent(student);
+    public ResponseEntity<Object> createStudent(@RequestBody Student student) {
+        try {
+            studentServices.createStudent(student);
+            return ResponseHandler.generateResponse("Student created successfully", HttpStatus.OK, null);
+        } catch (Exception error) {
+            return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 
     @GetMapping(value = "/{id}")
@@ -66,17 +71,32 @@ public class StudentController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public void deleteStudent(@PathVariable Long id) {
-        studentServices.deleteStudent(id);
+    public ResponseEntity<Object> deleteStudent(@PathVariable Long id) {
+        try {
+            studentServices.deleteStudent(id);
+            return ResponseHandler.generateResponse("Student deleted successfully", HttpStatus.OK, null);
+        } catch (Exception error) {
+            return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 
     @PostMapping(value = "/{id}/classrooms/{idClassroom}")
-    public void addClassroom(@PathVariable Long id, @PathVariable Long idClassroom) {
-        studentServices.addClassroom(id, idClassroom);
+    public ResponseEntity<Object> addClassroom(@PathVariable Long id, @PathVariable Long idClassroom) {
+        try {
+            studentServices.addClassroom(id, idClassroom);
+            return ResponseHandler.generateResponse("Student added to class successfully", HttpStatus.OK, null);
+        } catch (Exception error) {
+            return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 
     @DeleteMapping(value = "/{id}/classrooms/{idClassroom}")
-    public void removeClassroom(@PathVariable Long id, @PathVariable Long idClassroom) {
-        studentServices.removeClassroom(id, idClassroom);
+    public ResponseEntity<Object> removeClassroom(@PathVariable Long id, @PathVariable Long idClassroom) {
+        try {
+            studentServices.removeClassroom(id, idClassroom);
+            return ResponseHandler.generateResponse("Student removed to class successfully", HttpStatus.OK, null);
+        } catch (Exception error) {
+            return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 }

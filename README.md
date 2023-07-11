@@ -110,6 +110,22 @@ Method: `DELETE`
 /api/students/{id_estudiante}
 ```
 
+Añadir estudiante a una clase
+
+Method: `POST`
+
+```
+/api/students/{id_estudiante}/classrooms/{id_clase}
+```
+
+Remover estudiante de una clase
+
+Method: `DELETE`
+
+```
+/api/students/{id_estudiante}/classrooms/{id_clase}
+```
+
 ### Profesores
 
 Obtener todos los profesores

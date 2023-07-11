@@ -70,19 +70,16 @@ public class StudentServices {
         Student student = studentRepo.findById(id).orElse(null);
         Classroom classroom = classroomRepo.findById(idClassroom).orElse(null);
 
-        if (student != null && classroom != null) {
-            classroom.addStudent(student);
-            classroomRepo.save(classroom);
-        }
+        classroom.addStudent(student);
+        classroomRepo.save(classroom);
+        studentRepo.save(student);
     }
 
     public void removeClassroom(Long id, Long idClassroom) {
-        Student student = studentRepo.findById(id).orElse(null);
         Classroom classroom = classroomRepo.findById(idClassroom).orElse(null);
-
-        if (student != null && classroom != null) {
-            classroom.removeStudent(student);
-            classroomRepo.save(classroom);
-        }
+        Student student = classroom.getStudents().stream().filter(s -> s.getId() == id).findFirst().orElse(null);
+        
+        classroom.removeStudent(student);
+        classroomRepo.save(classroom);
     }
 }

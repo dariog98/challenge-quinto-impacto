@@ -3,6 +3,7 @@ package com.challengeqi.challenge.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import com.challengeqi.challenge.Services.AuthServices;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AuthController {
     @Autowired
     private AuthServices authServices;
@@ -31,7 +33,12 @@ public class AuthController {
     }
 
     @PostMapping(value = "/register")
-    public AuthResponse register(@RequestBody RegisterRequest request) {
-        return authServices.register(request);
+    public ResponseEntity<Object> register(@RequestBody RegisterRequest request) {
+        try {
+            AuthResponse response = authServices.register(request);
+            return ResponseHandler.generateResponse("Register successfully", HttpStatus.OK, response);
+        } catch (Exception error) {
+            return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 }

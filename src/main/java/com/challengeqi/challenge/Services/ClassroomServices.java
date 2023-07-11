@@ -37,11 +37,16 @@ public class ClassroomServices {
         return classroomDto;
     }
 
-    public void deleteClassroom(Long id) {
-        classroomRepo.deleteById(id); 
+    public ClassroomCompleteDto editClassroom(Long id, Classroom classroom) {
+        Classroom regClassroom = classroomRepo.findById(id).orElse(null);
+        regClassroom.setDescription(classroom.getDescription());
+        regClassroom.setClasstime(regClassroom.getClasstime());
+        classroomRepo.save(regClassroom);
+        ClassroomCompleteDto classroomDto = modelMapper.map(regClassroom, ClassroomCompleteDto.class);
+        return classroomDto;
     }
 
-    public void deleteProffesor(Long id, Long idProfessor) {
+    public void deleteClassroom(Long id) {
         classroomRepo.deleteById(id); 
     }
 }

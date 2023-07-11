@@ -28,8 +28,8 @@ public class SecurityConfig {
             )
             .authorizeHttpRequests(authRequest ->
                 authRequest
-                    .requestMatchers("/api/auth/**").permitAll()
                     //.anyRequest().permitAll()
+                    .requestMatchers("/api/auth/**").permitAll()
                     .anyRequest().authenticated()
             )
             .sessionManagement(sessionManager ->

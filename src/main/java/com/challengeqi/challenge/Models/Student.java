@@ -38,6 +38,6 @@ public class Student {
     private String address;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "student_class", joinColumns = @JoinColumn(name="id_student"), inverseJoinColumns = @JoinColumn(name = "id_class"))
+    @JoinTable(name = "student_class", joinColumns = @JoinColumn(name="student_id"), inverseJoinColumns = @JoinColumn(name = "class_id"))
     private List<Classroom> classrooms;
 }

@@ -9,6 +9,7 @@ import lombok.Setter;
 public class ClassroomCompleteDto {
     private Long id;
     private String description;
+    private ClasstimeDto classtime;
     private List<StudentBasicDto> students;
     private ProfessorBasicDto professor;
 }

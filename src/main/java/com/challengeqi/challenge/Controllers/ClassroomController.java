@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,8 +40,13 @@ public class ClassroomController {
     }
 
     @PostMapping
-    public void createClassroom(@RequestBody Classroom classroom) {
-        classroomServices.createClassroom(classroom);
+    public ResponseEntity<Object> createClassroom(@RequestBody Classroom classroom) {
+        try {
+            classroomServices.createClassroom(classroom);
+            return ResponseHandler.generateResponse("Class created successfully", HttpStatus.OK, null);
+        } catch (Exception error) {
+            return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 
     @GetMapping(value = "/{id}")
@@ -53,8 +59,23 @@ public class ClassroomController {
         }
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Object> editClassroom(@PathVariable Long id, @RequestBody Classroom classroom) {
+        try {
+            ClassroomCompleteDto regClassroom = classroomServices.editClassroom(id, classroom);
+            return ResponseHandler.generateResponse("Request made successfully", HttpStatus.OK, regClassroom);
+        } catch (Exception error) {
+            return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
+    }
+
     @DeleteMapping(value = "/{id}")
-    public void deleteClassroom(@PathVariable Long id) {
-        classroomServices.deleteClassroom(id);
+    public ResponseEntity<Object> deleteClassroom(@PathVariable Long id) {
+        try {
+            classroomServices.deleteClassroom(id);
+            return ResponseHandler.generateResponse("Class created successfully", HttpStatus.OK, null);
+        } catch (Exception error) {
+            return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 }
