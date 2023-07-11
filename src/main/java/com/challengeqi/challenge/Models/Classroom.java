@@ -12,12 +12,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Data;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
-@Getter @Setter @ToString
+@Data
 @Entity
 @Table(name = "class")
 public class Classroom {
@@ -35,11 +32,23 @@ public class Classroom {
     @JoinColumn(name = "professor_id")
     private Professor professor;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "classtime_id")
+    private Classtime classtime;
+
     public void addStudent(Student student) {
-        this.students.add(student);
+        students.add(student);
+        student.getClassrooms().add(this);
     }
 
     public void removeStudent(Student student) {
-        this.students.remove(student);
+        students.remove(student);
+        student.getClassrooms().remove(this);
     }
+
+    //public void removeStudent(Long idStudent){
+    //    Student student = students.stream().filter(s -> s.getId() == idStudent).findFirst().orElse(null);
+    //    students.remove(student);
+    //    student.getClassrooms().remove(this);
+    //}
 }

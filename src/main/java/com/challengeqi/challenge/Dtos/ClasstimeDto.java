@@ -4,8 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class ClassroomBasicDto {
+public class ClasstimeDto {
     private Long id;
     private String description;
-    private ClasstimeDto classtime;
 }

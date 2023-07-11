@@ -49,6 +49,7 @@ public class AuthServices {
         userRepo.save(user);
 
         return AuthResponse.builder()
+            .username(user.getUsername())
             .token(jwtService.getToken(user))
             .build();
     }

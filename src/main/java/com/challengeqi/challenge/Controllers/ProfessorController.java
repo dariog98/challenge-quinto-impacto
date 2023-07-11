@@ -41,8 +41,13 @@ public class ProfessorController {
     }
 
     @PostMapping
-    public void createProfessor(@RequestBody Professor professor) {
-        professorServices.createProfessor(professor);
+    public ResponseEntity<Object> createProfessor(@RequestBody Professor professor) {
+        try {
+            professorServices.createProfessor(professor);
+            return ResponseHandler.generateResponse("Professor created successfully", HttpStatus.OK, null);
+        } catch (Exception error) {
+            return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 
     @GetMapping(value = "/{id}")
@@ -59,24 +64,39 @@ public class ProfessorController {
     public ResponseEntity<Object> editProfessor(@PathVariable Long id, @RequestBody Professor professor) {
         try {
             ProfessorCompleteDto regProfessor = professorServices.editProfessor(id, professor);
-            return ResponseHandler.generateResponse("Request made successfully", HttpStatus.OK, regProfessor);
+            return ResponseHandler.generateResponse("Professor edited successfully", HttpStatus.OK, regProfessor);
         } catch (Exception error) {
             return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
         }
     }
 
     @DeleteMapping(value = "/{id}")
-    public void deleteProfessor(@PathVariable Long id) {
-        professorServices.deleteProfessor(id);
+    public ResponseEntity<Object> deleteProfessor(@PathVariable Long id) {
+        try {
+            professorServices.deleteProfessor(id);
+            return ResponseHandler.generateResponse("Professor deleted successfully", HttpStatus.OK, null);
+        } catch (Exception error) {
+            return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 
     @PostMapping(value = "/{id}/classrooms/{idClassroom}")
-    public void addClassroom(@PathVariable Long id, @PathVariable Long idClassroom) {
-        professorServices.addClassroom(id, idClassroom);
+    public ResponseEntity<Object> addClassroom(@PathVariable Long id, @PathVariable Long idClassroom) {
+        try {
+            professorServices.addClassroom(id, idClassroom);
+            return ResponseHandler.generateResponse("Class added to professor successfully", HttpStatus.OK, null);
+        } catch (Exception error) {
+            return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 
     @DeleteMapping(value = "/{id}/classrooms/{idClassroom}")
-    public void removeClassroom(@PathVariable Long id, @PathVariable Long idClassroom) {
-        professorServices.removeClassroom(id, idClassroom);
+    public ResponseEntity<Object> removeClassroom(@PathVariable Long id, @PathVariable Long idClassroom) {
+        try {
+            professorServices.removeClassroom(id, idClassroom);
+            return ResponseHandler.generateResponse("Class removed to professor successfully", HttpStatus.OK, null);
+        } catch (Exception error) {
+            return ResponseHandler.generateResponse(error.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 }
