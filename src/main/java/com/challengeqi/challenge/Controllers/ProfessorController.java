@@ -24,7 +24,6 @@ import com.challengeqi.challenge.Services.ProfessorServices;
 
 @RestController
 @RequestMapping("api/professors")
-@CrossOrigin(origins = "http://localhost:5173")
 public class ProfessorController {
     
     @Autowired

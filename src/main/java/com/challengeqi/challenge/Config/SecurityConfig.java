@@ -9,8 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import com.challengeqi.challenge.Filter.JwtAuthenticationFilter;
+import com.challengeqi.challenge.Filter.SpaWebFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -29,7 +31,9 @@ public class SecurityConfig {
             .authorizeHttpRequests(authRequest ->
                 authRequest
                     //.anyRequest().permitAll()
-                    .requestMatchers("/api/auth/**").permitAll()
+                    //.requestMatchers("/api/auth/**").permitAll()
+                    .requestMatchers("/", "/index.html", "/static/**",
+                    "/assets/*", "/*.ico", "/*.json", "/*.png", "/api/auth/**").permitAll()
                     .anyRequest().authenticated()
             )
             .sessionManagement(sessionManager ->
@@ -37,7 +41,9 @@ public class SecurityConfig {
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
             .authenticationProvider(authProvider)
+            //.addFilterBefore(corsFilter, ChannelProcessingFilter.class)
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+            .addFilterAfter(new SpaWebFilter(), BasicAuthenticationFilter.class)
             .build();
     }
 }
