@@ -52,7 +52,6 @@ const router = createBrowserRouter([
 const router = createBrowserRouter([
     {
         path: ROUTES.Home,
-        //element: <Home/>,
         children: [
             {
                 element: <ProtectedUserRoute/>,

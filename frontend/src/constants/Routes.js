@@ -3,7 +3,7 @@ const ROUTES = {
     Classrooms: '/classrooms',
     Professors: '/professors',
     Students: '/students',
-    Login: '/login',
+    Login: '/',
     Register: '/register'
 }
 

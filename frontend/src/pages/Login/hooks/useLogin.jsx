@@ -8,7 +8,7 @@ import { ROUTES } from '../../../constants/Routes'
 const useLogin = () => {
     const [loading, setLoading] = useState(false)
     const { handleLogIn } = useUserContext()
-    const { register, handleSubmit } = useForm()
+    const { register, formState: { errors }, handleSubmit } = useForm()
     const navigate = useNavigate()
 
     const loginUser = async (data) => {
@@ -38,7 +38,7 @@ const useLogin = () => {
 
     return {
         loading,
-        formManager: { register },
+        formManager: { register, errors },
         handleSubmit: handleSubmit(loginUser)
     }
 }
