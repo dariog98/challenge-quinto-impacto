@@ -6,6 +6,7 @@ import { ROUTES } from '../constants/Routes'
 import ItemBox from './Basics/ItemBox'
 import Subtitle from './Basics/Subtitle'
 import useClasstimes from './Classroom/hooks/useClasstimes'
+import RemovableItem from './Basics/RemovableItem'
 
 const Classroom = () => {
     const params = useParams()
@@ -46,7 +47,11 @@ const Classroom = () => {
                         <Box display='flex' flexDirection='column' gap='1rem'>
                             {
                                 classroom.professor
-                                ? <ItemBox title={`${classroom.professor.surnames} ${classroom.professor.names}`} route={`${ROUTES.Professors}/${classroom.professor.id}`}/>
+                                ? <RemovableItem
+                                    title={`${classroom.professor.surnames} ${classroom.professor.names}`}
+                                    route={`${ROUTES.Professors}/${classroom.professor.id}`}
+                                    handleRemove={null}
+                                />  
                                 : <ItemBox title='Profesor no asignado'/>
                             }
                         </Box>
@@ -57,7 +62,12 @@ const Classroom = () => {
                         <Box display='flex' flexDirection='column' gap='1rem'>
                             {
                                 classroom.students.map(student =>
-                                    <ItemBox key={student.id} title={`${student.surnames} ${student.names}`} route={`${ROUTES.Students}/${student.id}`}/>
+                                    <RemovableItem
+                                        key={student.id}
+                                        title={`${student.surnames} ${student.names}`}
+                                        route={`${ROUTES.Students}/${student.id}`}
+                                        handleRemove={null}
+                                    />  
                                 )
                             }
                         </Box>
