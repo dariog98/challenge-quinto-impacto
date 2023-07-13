@@ -1,0 +1,157 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Ubuntu';
+}
+
+a {
+    text-decoration: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.navbar {
+    padding: 1rem;
+}
+
+.navbar-button {
+    color: #808080;
+}
+
+.navbar-button.active {
+    color: #0d6efd;
+}
+
+.navbar-icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+.input {
+    border-radius: 4rem;
+    border-color: #808080;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #808080;
+    background: inherit;
+}
+
+.label {
+    border-radius: 4rem;
+    border-color: #808080;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #808080;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+}
+
+.input-group .label {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-width: 0;
+}
+.input-group .input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-width: 0;
+}
+
+.box {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #808080;
+    /*border-radius: 10rem;*/
+    border-radius: 1.5rem;
+    padding: 1rem 3rem;
+    color: #808080;
+    min-width: 100%;
+}
+
+.box-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.box:hover {
+    background-color: #0d6efd;
+    color: #fafafa;
+}
+
+.title {
+    color: #808080;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.title-icon {
+    color: #808080;
+    width: 4rem;
+    height: 4rem;
+}
+
+.subtitle {
+    color: #808080;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.subtitle-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.gap-05 {
+    gap: 0.5rem;
+}
+
+.gap-1 {
+    gap: 1rem;
+}
+
+.container {
+    max-width: 900px;
+    padding: 0rem 2rem;
+    margin: auto;
+}
