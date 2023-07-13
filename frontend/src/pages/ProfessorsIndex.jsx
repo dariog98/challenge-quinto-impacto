@@ -1,8 +1,8 @@
-import { ROUTES } from "../constants/Routes"
-import useProfessors from "./ProfessorsIndex/hooks/useProfessors"
-import ItemBox from "./Basics/ItemBox"
+import { ROUTES } from '../constants/Routes'
+import useProfessors from './ProfessorsIndex/hooks/useProfessors'
+import ItemBox from './Basics/ItemBox'
 import { Box } from '@chakra-ui/react'
-import Search from "./Basics/Search"
+import Search from './Basics/Search'
 
 const ProfessorsIndex = () => {
     const { professors, handleName } = useProfessors()

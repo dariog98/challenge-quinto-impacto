@@ -6,18 +6,19 @@ import Subtitle from './Basics/Subtitle'
 import ItemBox from './Basics/ItemBox'
 import Form from './Basics/Form'
 import { ROUTES } from '../constants/Routes'
+import AddClass from './Professor/AddClass'
 
 const Professor = () => {
     const params = useParams()
-    const { loading, professor, editProfessor } = useProfessor(params.id)
+    const { loading, professor, editProfessor, addClassroom } = useProfessor(params.id)
 
     const labels = [
-        { name: "surnames", description: "Apellidos" },
-        { name: "names", description: "Nombres" },
-        { name: "dni", description: "DNI" },
-        { name: "birthdate", description: "Fecha de Nacimiento" },
-        { name: "phone", description: "Teléfono" },
-        { name: "address", description: "Dirección" },
+        { name: 'surnames', description: 'Apellidos' },
+        { name: 'names', description: 'Nombres' },
+        { name: 'dni', description: 'DNI' },
+        { name: 'birthdate', description: 'Fecha de Nacimiento' },
+        { name: 'phone', description: 'Teléfono' },
+        { name: 'address', description: 'Dirección' },
     ]
 
     return (
@@ -27,11 +28,11 @@ const Professor = () => {
                 ? <>
                     <Box display='flex' flexDirection='column' gap='1rem'>
                         <Subtitle icon={faChalkboardTeacher} title='Datos del profesor'/>
-                        <Form defaultValues={professor} labels={labels} handleAction={editProfessor}/>
+                        <Form defaultValues={professor} labels={labels} handleAction={editProfessor} isDisabled={true}/>
                     </Box>
 
                     <Box display='flex' flexDirection='column' gap='1rem'>
-                        <Subtitle icon={faSchool} title='Clases'/>
+                        <Subtitle icon={faSchool} title='Clases'><AddClass handleSubmit={addClassroom}/></Subtitle>
                         <Box display='flex' flexDirection='column' gap='1rem'>
                             {
                                 professor.classrooms.length

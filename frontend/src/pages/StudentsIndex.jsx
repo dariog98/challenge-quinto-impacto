@@ -1,9 +1,9 @@
-import useStudents from "./StudentsIndex/hooks/useStudents"
+import useStudents from './StudentsIndex/hooks/useStudents'
 import { ROUTES } from '../constants/Routes'
 import { Box, Select, InputGroup, InputLeftAddon } from '@chakra-ui/react'
-import ItemBox from "./Basics/ItemBox"
-import Search from "./Basics/Search"
-import useClassrooms from "./ClassroomsIndex/hooks/useClassrooms"
+import ItemBox from './Basics/ItemBox'
+import Search from './Basics/Search'
+import useClassrooms from './ClassroomsIndex/hooks/useClassrooms'
 
 const StudentsIndex = () => {
     const { students, handleName, handleClass } = useStudents()

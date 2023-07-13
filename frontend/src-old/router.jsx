@@ -1,11 +1,11 @@
-import { ROUTES } from "./constants/Routes"
+import { ROUTES } from './constants/Routes'
 import { createBrowserRouter } from 'react-router-dom'
-import ClassroomsIndex from "./pages/ClassroomsIndex"
-import ProfessorsIndex from "./pages/ProfessorsIndex"
-import Container from "./pages/Basics/Container"
+import ClassroomsIndex from './pages/ClassroomsIndex'
+import ProfessorsIndex from './pages/ProfessorsIndex'
+import Container from './pages/Basics/Container'
 import StudentsIndex from './pages/StudentsIndex'
-import Classroom from "./pages/Classroom"
-import Student from "./pages/Student"
+import Classroom from './pages/Classroom'
+import Student from './pages/Student'
 
 const router = createBrowserRouter([
     {

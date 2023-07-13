@@ -24,18 +24,14 @@ const Navbar = () => {
     const { user } = useUserContext()
 
     return (
-        <Box display='flex' justifyContent='space-between' alignItems='center' h='5rem' borderBottomWidth='1px'>
-            
-            <Box w='100px'>
-            </Box>
-
+        <Box display='flex' justifyContent='space-between' alignItems='center' h='5rem' borderBottomWidth='1px' p='0rem 2rem'>
             <Box display='flex' gap='3rem'>
                 <Button route={ROUTES.Classrooms} icon={faSchool} title='Clases'/>
                 <Button route={ROUTES.Professors} icon={faChalkboardTeacher} title='Profesores'/>
                 <Button route={ROUTES.Students} icon={faUsers} title='Alumnos'/>
             </Box>
 
-            <Box w='100px'>
+            <Box>
                 {
                     user &&
                     <>

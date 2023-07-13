@@ -11,12 +11,12 @@ const Student = () => {
     const params = useParams()
     const { loading, student, editStudent } = useStudent(params.id)
     const labels = [
-        { name: "surnames", description: "Apellidos" },
-        { name: "names", description: "Nombres" },
-        { name: "dni", description: "DNI" },
-        { name: "birthdate", description: "Fecha de Nacimiento" },
-        { name: "phone", description: "Teléfono" },
-        { name: "address", description: "Dirección" },
+        { name: 'surnames', description: 'Apellidos' },
+        { name: 'names', description: 'Nombres' },
+        { name: 'dni', description: 'DNI' },
+        { name: 'birthdate', description: 'Fecha de Nacimiento' },
+        { name: 'phone', description: 'Teléfono' },
+        { name: 'address', description: 'Dirección' },
     ]
 
     return (

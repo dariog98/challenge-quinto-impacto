@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import useClassrooms from "./ClassroomsIndex/hooks/useClassrooms"
+import useClassrooms from './ClassroomsIndex/hooks/useClassrooms'
 import { ROUTES } from '../constants/Routes'
 
 const ClassroomsNotFound = () => {

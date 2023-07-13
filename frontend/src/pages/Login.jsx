@@ -11,16 +11,16 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
     const { loading, formManager, handleSubmit } = useLogin()
     return (
-        <Box display='flex' justifyContent='center' alignItems='center' w='100%' h='100vh' background='teal'>
-            <Box display='flex' flexDirection='column' gap='1rem' justifyContent='center' alignItems='center' borderWidth='1px' padding='4rem 2rem' background='white' borderRadius='lg'>
+        <Box display='flex' justifyContent='center' alignItems='center' w='100%' h='100vh'>
+            <Box display='flex' flexDirection='column' gap='1rem' justifyContent='center' alignItems='center' borderWidth='1px' padding='4rem 2rem' borderRadius='lg'>
 
-                <Input type='text' placeholder='Username' {...formManager.register("username")}/>
+                <Input type='text' placeholder='Username' {...formManager.register('username')}/>
 
                 <InputGroup size='md'>
-                    <Input type={showPassword ? 'text' : 'password'} placeholder='Contraseña' { ...formManager.register("password") }/>
-                    <InputRightElement width='4rem'>
+                    <Input type={showPassword ? 'text' : 'password'} placeholder='Contraseña' { ...formManager.register('password') }/>
+                    <InputRightElement>
                         <Button colorScheme='teal' onClick={() => setShowPassword(show => !show)}>
-                        {showPassword ? 'Hide' : 'Show'}
+                        {showPassword ? <FontAwesomeIcon icon={faEye}/> : <FontAwesomeIcon icon={faEyeSlash}/>}
                         </Button>
                     </InputRightElement>
                 </InputGroup>

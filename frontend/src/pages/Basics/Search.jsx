@@ -16,10 +16,8 @@ const Search = ({ handleSearch }) => {
             <InputLeftElement pointerEvents='none'>
                 <SearchIcon color='gray.500'/>
             </InputLeftElement>
-            <Input ref={searchValue} type='text' placeholder='Buscar' />
-            <InputRightElement width='4.5rem'>
-                <Button onClick={handleClick} borderTopLeftRadius='0' borderBottomLeftRadius='0'>Buscar</Button>
-            </InputRightElement>
+            <Input ref={searchValue} type='text' placeholder='Buscar' borderRightRadius='0'/>
+            <Button onClick={handleClick} borderTopLeftRadius='0' borderBottomLeftRadius='0'>Buscar</Button>
         </InputGroup>
     )
 }

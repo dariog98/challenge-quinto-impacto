@@ -1,9 +1,9 @@
-import { useUserContext } from "../../Basics/UserProvider"
+import { useUserContext } from '../../Basics/UserProvider'
 import { useForm } from 'react-hook-form'
-import { APIROUTES } from "../../../constants/ApiRoutes"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { ROUTES } from "../../../constants/Routes"
+import { APIROUTES } from '../../../constants/ApiRoutes'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ROUTES } from '../../../constants/Routes'
 
 const useLogin = () => {
     const [loading, setLoading] = useState(false)
@@ -16,9 +16,9 @@ const useLogin = () => {
             setLoading(true)
 
             const config = {
-                method: "POST",
+                method: 'POST',
                 headers: {
-                    "Content-Type": "application/json",
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data)
             }

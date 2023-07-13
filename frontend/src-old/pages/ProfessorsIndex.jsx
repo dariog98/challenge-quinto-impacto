@@ -1,4 +1,4 @@
-import useProfessors from "./ProfessorsIndex/hooks/useProfessors"
+import useProfessors from './ProfessorsIndex/hooks/useProfessors'
 
 const ProfessorsIndex = () => {
     const { professors } = useProfessors()

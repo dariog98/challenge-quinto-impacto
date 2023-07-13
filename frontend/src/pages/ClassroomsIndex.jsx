@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react'
-import useClassrooms from "./ClassroomsIndex/hooks/useClassrooms"
+import useClassrooms from './ClassroomsIndex/hooks/useClassrooms'
 import { ROUTES } from '../constants/Routes'
 import ItemBox from './Basics/ItemBox'
 import Search from './Basics/Search'
@@ -21,7 +21,7 @@ const ClassroomsIndex = () => {
             {
                 classrooms.length
                 ? classrooms.map(classroom =>
-                    <ItemBox title={classroom.description} route={`${ROUTES.Classrooms}/${classroom.id}`}/>
+                    <ItemBox key={classroom.id} title={classroom.description} route={`${ROUTES.Classrooms}/${classroom.id}`}/>
                 )
                 : <ClassroomsNotFound/>
             }

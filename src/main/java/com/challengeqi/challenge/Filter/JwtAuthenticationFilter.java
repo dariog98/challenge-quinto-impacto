@@ -32,12 +32,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         throws ServletException, IOException {
         final String token = getTokenFromRequest(request);
 
-        if (token == null) {
-            filterChain.doFilter(request, response);
-            return;
-        }
-
         try {
+            if (token == null) {
+                System.out.println("token " + token);
+                filterChain.doFilter(request, response);
+                return;
+                //throw new Exception("Token can't be null.");
+            }
+
             final String username = jwtService.getUsernameFromToken(token);
 
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {

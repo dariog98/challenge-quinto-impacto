@@ -1,4 +1,4 @@
-import Navbar from "./Navbar"
+import Navbar from './Navbar'
 
 //<div className='d-flex flex-column align-items-center'  style={{ gap: '1rem' }}>
 

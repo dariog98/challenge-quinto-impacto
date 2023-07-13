@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
-import { APIROUTES } from "../../../constants/ApiRoutes"
-import { useUserContext } from "../../Basics/UserProvider"
+import { useEffect, useState } from 'react'
+import { APIROUTES } from '../../../constants/ApiRoutes'
+import { useUserContext } from '../../Basics/UserProvider'
 
 const useClassrooms = () => {
     const [loading, setLoading] = useState(false)
@@ -13,15 +13,16 @@ const useClassrooms = () => {
             setLoading(true)
 
             const config = {
-                method: "GET",
+                method: 'GET',
                 headers: {
-                    "Content-Type": "application/json",
-                    "Authentication": `Bearer ${user.token}`
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`,
+                    'Accept': 'application/json',
                 }
             }
 
             const response = await fetch(`${APIROUTES.Classrooms}?description=${searchDescription}`, config)
-            console.log(response)
+            
             if (response.status === 200) {
                 const result = await response.json()
                 if (result.data) {

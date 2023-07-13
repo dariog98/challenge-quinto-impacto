@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import useStudents from "./StudentsIndex/hooks/useStudents"
+import useStudents from './StudentsIndex/hooks/useStudents'
 import { ROUTES } from '../constants/Routes'
 
 const StudentsIndex = () => {

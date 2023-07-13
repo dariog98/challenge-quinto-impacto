@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { APIROUTES } from "../../../constants/ApiRoutes"
+import { useEffect, useState } from 'react'
+import { APIROUTES } from '../../../constants/ApiRoutes'
 
 const useStudents = () => {
     const [loading, setLoading] = useState(false)

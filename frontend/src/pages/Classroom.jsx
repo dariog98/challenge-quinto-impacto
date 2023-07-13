@@ -29,7 +29,7 @@ const Classroom = () => {
 
                                 <InputGroup>
                                     <InputLeftAddon children='Turno' />
-                                    <Select defaultValue={classroom.classtime.id} borderTopLeftRadius='0' borderBottomLeftRadius='0'>
+                                    <Select defaultValue={classroom?.classtime?.id} borderTopLeftRadius='0' borderBottomLeftRadius='0'>
                                         {
                                             classtimes.map(classtime =>
                                                 <option key={classtime.id} value={classtime.id}>{classtime.description}</option>

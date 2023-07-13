@@ -1,7 +1,7 @@
 import { Box, Stack, InputGroup, InputLeftAddon, Input, Button } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
 
-const Form = ({ defaultValues, labels, handleAction }) => {
+const Form = ({ defaultValues, labels, isDisabled, handleAction }) => {
     const { register, reset, handleSubmit } = useForm({ defaultValues })
 
     const resetForm = () => {
@@ -13,9 +13,9 @@ const Form = ({ defaultValues, labels, handleAction }) => {
             <Stack spacing='1rem'>
                 {
                     labels.map((label, index) =>
-                        <InputGroup key={index}>
+                        <InputGroup key={index} colorScheme='' variant={isDisabled ? 'filled' : 'outline'}>
                             <InputLeftAddon children={label.description} />
-                            <Input type='text' placeholder='' {...register(label.name)}/>
+                            <Input type='text' {...register(label.name)} isDisabled={isDisabled}/>
                         </InputGroup>
                     )
                 }
