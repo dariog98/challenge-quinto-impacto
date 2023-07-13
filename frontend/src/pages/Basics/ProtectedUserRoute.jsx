@@ -5,8 +5,6 @@ import { ROUTES } from '../../constants/Routes'
 const ProtectedUserRoute = () => {
     const { user } = useUserContext()
 
-    console.log(user)
-
     if (!user) {
         return <Navigate to={ROUTES.Login} replace/>
     }

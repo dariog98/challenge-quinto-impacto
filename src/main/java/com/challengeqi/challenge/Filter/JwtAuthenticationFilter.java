@@ -34,10 +34,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         try {
             if (token == null) {
-                System.out.println("token " + token);
                 filterChain.doFilter(request, response);
                 return;
-                //throw new Exception("Token can't be null.");
             }
 
             final String username = jwtService.getUsernameFromToken(token);

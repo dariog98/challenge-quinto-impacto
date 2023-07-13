@@ -12,8 +12,8 @@ create table user (
     password varchar(60) not null,
     names varchar(50) null,
     surnames varchar(50) null,
-    dni varchar(8) not null unique,
-    birthdate date not null,
+    dni varchar(8) null unique,
+    birthdate date null,
     phone varchar(20) null,
     address varchar(150) null
 );

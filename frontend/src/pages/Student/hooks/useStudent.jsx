@@ -52,6 +52,53 @@ const useStudent = (idStudent) => {
         }
     }
 
+    const addClassroom = async (idClassroom) => {
+        try {
+            //setLoading(true)
+            const config = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            }
+
+            const response = await fetch(`${APIROUTES.Students}/${idStudent}/classrooms/${idClassroom}`, config)
+            if (response.status === 200) {
+                //const result = await response.json()
+                getStudent()
+            }
+            //setLoading(false)
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+        }
+    }
+
+    const removeClassroom = async (idClassroom) => {
+        try {
+            //setLoading(true)
+            const config = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            }
+
+            const response = await fetch(`${APIROUTES.Students}/${idStudent}/classrooms/${idClassroom}`, config)
+            if (response.status === 200) {
+                //const result = await response.json()
+                getStudent()
+            }
+            //setLoading(false)
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+        }
+    }
+
+
     useEffect(() => {
         getStudent()
     }, [idStudent])
@@ -60,6 +107,8 @@ const useStudent = (idStudent) => {
         loading,
         student,
         editStudent,
+        addClassroom,
+        removeClassroom
     }
 }
 

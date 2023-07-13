@@ -11,14 +11,13 @@ import AddClass from './Professor/AddClass'
 const Professor = () => {
     const params = useParams()
     const { loading, professor, editProfessor, addClassroom } = useProfessor(params.id)
-
-    const labels = [
-        { name: 'surnames', description: 'Apellidos' },
-        { name: 'names', description: 'Nombres' },
-        { name: 'dni', description: 'DNI' },
-        { name: 'birthdate', description: 'Fecha de Nacimiento' },
-        { name: 'phone', description: 'Teléfono' },
-        { name: 'address', description: 'Dirección' },
+    const inputs = [
+        { name: 'surnames', label: 'Apellidos', type: 'text' },
+        { name: 'names', label: 'Nombres', type: 'text' },
+        { name: 'dni', label: 'DNI', type: 'number' },
+        { name: 'birthdate', label: 'Fecha de Nacimiento', type: 'date' },
+        { name: 'phone', label: 'Teléfono', type: 'text' },
+        { name: 'address', label: 'Dirección', type: 'text' },
     ]
 
     return (
@@ -28,7 +27,7 @@ const Professor = () => {
                 ? <>
                     <Box display='flex' flexDirection='column' gap='1rem'>
                         <Subtitle icon={faChalkboardTeacher} title='Datos del profesor'/>
-                        <Form defaultValues={professor} labels={labels} handleAction={editProfessor} isDisabled={true}/>
+                        <Form defaultValues={professor} inputs={inputs} handleAction={editProfessor}/>
                     </Box>
 
                     <Box display='flex' flexDirection='column' gap='1rem'>
