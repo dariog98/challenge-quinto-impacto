@@ -36,6 +36,36 @@ const useClassrooms = () => {
         }
     }
 
+    const createClassroom = async (data) => {
+        try {
+            setLoading(true)
+
+            const model = {
+                description: data?.description,
+                classtime: { id: data?.classtime }
+            }
+
+            const config = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                },
+                body: JSON.stringify(model)
+            }
+
+            const response = await fetch(APIROUTES.Classrooms, config)
+            if (response.status === 200) {
+                getAllClassrooms()
+            }
+            setLoading(false)
+            return response
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+        }
+    }
+
     useEffect(() => {
         getAllClassrooms()
     }, [searchDescription])
@@ -43,7 +73,8 @@ const useClassrooms = () => {
     return {
         loading,
         classrooms,
-        handleDescription: setSearchDescription
+        handleDescription: setSearchDescription,
+        createClassroom
     }
 }
 

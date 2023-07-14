@@ -4,7 +4,7 @@ import { useUserContext } from '../../Basics/UserProvider'
 
 const useClasstimes = () => {
     const [loading, setLoading] = useState(false)
-    const [classtimes, setClasstimes] = useState()
+    const [classtimes, setClasstimes] = useState([])
     const { user } = useUserContext()
 
     const getClasstime = async () => {

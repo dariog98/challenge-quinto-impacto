@@ -33,6 +33,32 @@ const useStudents = () => {
         }
     }
 
+    const createStudent = async (data) => {
+        try {
+            setLoading(true)
+
+            const config = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                },
+                body: JSON.stringify(data)
+            }
+
+            const response = await fetch(APIROUTES.Students, config)
+            console.log(response)
+            if (response.status === 200) {
+                getAllStudents()
+            }
+            setLoading(false)
+            return response
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+        }
+    }
+
     useEffect(() => {
         getAllStudents()
     }, [searchName, searchClass])
@@ -41,7 +67,8 @@ const useStudents = () => {
         loading,
         students,
         handleName: setSearchName,
-        handleClass: setSearchClass
+        handleClass: setSearchClass,
+        createStudent
     }
 }
 

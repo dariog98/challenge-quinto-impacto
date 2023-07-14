@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react'
 const userContext = createContext()
 
 const UserProvider = ({children}) => {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState()
 
     const handleLogIn = (user) => {
         setUser(user)
@@ -12,7 +12,7 @@ const UserProvider = ({children}) => {
 
     const handleLogOut = () => {
         localStorage.removeItem('user')
-        setUser(null)
+        setUser(undefined)
     }
 
     const storagedUser = localStorage.getItem('user')

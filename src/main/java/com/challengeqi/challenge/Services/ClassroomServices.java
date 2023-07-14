@@ -40,7 +40,7 @@ public class ClassroomServices {
     public ClassroomCompleteDto editClassroom(Long id, Classroom classroom) {
         Classroom regClassroom = classroomRepo.findById(id).orElse(null);
         regClassroom.setDescription(classroom.getDescription());
-        regClassroom.setClasstime(regClassroom.getClasstime());
+        regClassroom.setClasstime(classroom.getClasstime());
         classroomRepo.save(regClassroom);
         ClassroomCompleteDto classroomDto = modelMapper.map(regClassroom, ClassroomCompleteDto.class);
         return classroomDto;
