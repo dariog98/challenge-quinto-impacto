@@ -61,7 +61,7 @@ Response Body: `ON SUCCESS`
         "username": "nombre_de_usuario"
         "token": "token_de_acceso_del_usuario"
     },
-    status": "codigo_de_status",
+    "status": "codigo_de_status",
     "message": "mensaje_de_error_o_confirmación"
 }
 ```
