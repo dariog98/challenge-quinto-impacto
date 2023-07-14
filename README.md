@@ -9,7 +9,7 @@ Method: `POST`
 Request Body:
 ```json
 {
-    "username": "nombre_de_usuario"
+    "username": "nombre_de_usuario",
     "password": "constraseña_de_usuario"
 }
 ```
@@ -23,7 +23,7 @@ Response Body: `ON SUCCESS`
 ```json
 {
     "data": {
-        "username": "nombre_de_usuario"
+        "username": "nombre_de_usuario",
         "token": "token_de_acceso_del_usuario"
     },
     "status": "codigo_de_status",
@@ -58,7 +58,7 @@ Response Body: `ON SUCCESS`
 ```json
 {
     "data": {
-        "username": "nombre_de_usuario"
+        "username": "nombre_de_usuario",
         "token": "token_de_acceso_del_usuario"
     },
     "status": "codigo_de_status",
@@ -93,7 +93,7 @@ Method: `POST`
 Request Body:
 ```json
 {
-    "description": "nombre_de_la_clase"
+    "description": "nombre_de_la_clase",
     "classtime": { "id": "id_del_turno" }
 }
 ```
@@ -110,7 +110,7 @@ Method: `PUT`
 Request Body:
 ```json
 {
-    "description": "nombre_de_la_clase"
+    "description": "nombre_de_la_clase",
     "classtime": { "id": "id_del_turno" }
 }
 ```
