@@ -6,6 +6,7 @@ import { ROUTES } from '../constants/Routes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash, faSchool } from '@fortawesome/free-solid-svg-icons'
 import { required } from '../constants/formErrors'
+import CustomInput from './Basics/CustomInput'
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -27,39 +28,18 @@ const Register = () => {
 
             <Box display='flex' flexDirection='column' gap='1rem' justifyContent='center' alignItems='center' borderWidth='0' padding='4rem 2rem' borderRadius='lg'>
 
-                <Box display='flex' gap='1rem'>
-                    <Box display='flex' flexDirection='column' w='50%' gap='0.5rem'>
-                        <Input type='text' placeholder='Apellidos' {...formManager.register('surnames', { required: required })}/>
-                        <Box w='100%' display={formManager.errors?.surnames ? 'inherit' : 'none'} fontSize='0.75rem'>
-                            <Text color='red'>{formManager.errors?.surnames?.message}</Text>
-                        </Box>
-                    </Box>
-
-                    <Box display='flex' flexDirection='column' w='50%' gap='0.5rem'>
-                        <Input type='text' placeholder='Nombres' {...formManager.register('names', { required: required })}/>
-
-                        <Box w='100%' display={formManager.errors?.names ? 'inherit' : 'none'} fontSize='0.75rem'>
-                            <Text color='red'>{formManager.errors?.names?.message}</Text>
-                        </Box>
-                    </Box>
+                <Box display='flex' flexWrap='wrap' gap='1rem'>
+                    <CustomInput formManager={formManager} name='surnames' type='text' placeholder='Apellidos' validations={{ required }}/>
+                    <CustomInput formManager={formManager} name='names' type='text' placeholder='Nombres' validations={{ required }}/>
                 </Box>
                 
-                <Box display='flex' gap='1rem'>
-                    <Box display='flex' flexDirection='column' w='50%' gap='0.5rem'>
-                        <Input type='text' placeholder='Username' {...formManager.register('username', { required: required })}/>
-
-                        <Box w='100%' display={formManager.errors?.username ? 'inherit' : 'none'} fontSize='0.75rem'>
-                            <Text color='red'>{formManager.errors?.username?.message}</Text>
-                        </Box>
-                    </Box>
-                    
-                    <Box display='flex' flexDirection='column' w='50%' gap='0.5rem'>
-                        <Input type='text' placeholder='Teléfono' {...formManager.register('phone')}/>
-                    </Box>
+                <Box display='flex' flexWrap='wrap' gap='1rem'>
+                    <CustomInput formManager={formManager} name='username' type='text' placeholder='Username' validations={{ required }}/>
+                    <CustomInput formManager={formManager} name='phone' type='text' placeholder='Teléfono'/>
                 </Box>
 
-                <Box display='flex' flexDirection='column' w='100%' gap='0.5rem'>
-                    <Input type='text' placeholder='Dirección' {...formManager.register('address')}/>
+                <Box display='flex' flexDirection='column' w='100%' gap='1rem'>
+                    <CustomInput formManager={formManager} name='address' type='text' placeholder='Dirección'/>
                 </Box>
 
                 <Box display='flex' flexDirection='column' w='100%' gap='0.5rem'>

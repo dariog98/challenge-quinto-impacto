@@ -42,9 +42,12 @@ const useProfessor = (idProfessor) => {
             }
 
             const response = await fetch(`${APIROUTES.Professors}/${idProfessor}`, config)
-            const result = await response.json()
-            setProfessor(result.data)
+            if (response.status === 200) {
+                const result = await response.json()
+                setProfessor(result.data)    
+            }
             //setLoading(false)
+            return response
         } catch (error) {
             console.log(error)
             setLoading(false)

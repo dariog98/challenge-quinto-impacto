@@ -1,18 +1,21 @@
-import { Box, Stack, InputGroup, InputLeftAddon, Input, Button } from '@chakra-ui/react'
+import { Box, Stack, Button } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
+import CustomInput from './CustomInput'
 
 const Form = ({ defaultValues, inputs, isEditMode, handleCloseEditMode, handleAction }) => {
-    const { register, reset, handleSubmit } = useForm({ defaultValues })
+    const { register, reset, formState: { errors },handleSubmit } = useForm({ defaultValues })
+    const formManager = { register, errors }
 
     const handleCancel = () => {
         handleCloseEditMode()
         reset(defaultValues)
     }
 
-    const handleConfirm = () => {
-        const action = handleSubmit(handleAction)
-        action()
-        handleCloseEditMode()
+    const handleConfirm = async (data) => {
+        const result = await handleAction(data)
+        if (result.status === 200) {
+            handleCloseEditMode()
+        }
     }
 
     return (
@@ -20,10 +23,16 @@ const Form = ({ defaultValues, inputs, isEditMode, handleCloseEditMode, handleAc
             <Stack spacing='1rem'>
                 {
                     inputs.map((input, index) =>
-                        <InputGroup key={index} colorScheme='' variant={!isEditMode ? 'filled' : 'outline'}>
-                            <InputLeftAddon children={input.label} />
-                            <Input type={input.type} {...register(input.name)} isReadOnly={!isEditMode}/>
-                        </InputGroup>
+                        <CustomInput
+                            key={index}
+                            formManager={formManager}
+                            before={input.label}
+                            name={input.name}
+                            type={input.type}
+                            isReadOnly={!isEditMode}
+                            validations={input?.validations}
+                            options={input?.options}
+                        />
                     )
                 }
             </Stack>
@@ -31,7 +40,7 @@ const Form = ({ defaultValues, inputs, isEditMode, handleCloseEditMode, handleAc
             {
                 isEditMode &&
                 <Box display='flex' gap='1rem' justifyContent='flex-end'>
-                    <Button onClick={handleConfirm} colorScheme='green'>Guardar</Button>
+                    <Button onClick={handleSubmit(handleConfirm)} colorScheme='green'>Guardar</Button>
                     <Button onClick={handleCancel} colorScheme='red'>Cancelar</Button>
                 </Box>
             }

@@ -12,6 +12,7 @@ import DeleteProfessor from './Professor/DeleteProfessor'
 import useProfessor from './Professor/hooks/useProfessor'
 import useRemoveClass from './Professor/hooks/useRemoveClass'
 import { useState } from 'react'
+import { required } from '../constants/formErrors'
 
 const Professor = () => {
     const params = useParams()
@@ -20,13 +21,14 @@ const Professor = () => {
     const [isEditMode, setEditMode] = useState()
 
     const inputs = [
-        { name: 'surnames', label: 'Apellidos', type: 'text' },
-        { name: 'names', label: 'Nombres', type: 'text' },
-        { name: 'dni', label: 'DNI', type: 'number' },
-        { name: 'birthdate', label: 'Fecha de Nacimiento', type: 'date' },
+        { name: 'surnames', label: 'Apellidos', type: 'text', validations: { required } },
+        { name: 'names', label: 'Nombres', type: 'text', validations: { required } },
+        { name: 'dni', label: 'DNI', type: 'number', validations: { required } },
+        { name: 'birthdate', label: 'Fecha de Nacimiento', type: 'date', validations: { required } },
         { name: 'phone', label: 'Teléfono', type: 'text' },
         { name: 'address', label: 'Dirección', type: 'text' },
     ]
+
 
     return (
         <Box display='flex' flexDirection='column' gap='1rem'>

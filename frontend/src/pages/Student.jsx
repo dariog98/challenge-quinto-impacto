@@ -4,14 +4,15 @@ import { faSchool, faUser } from '@fortawesome/free-solid-svg-icons'
 import { Box, Button} from '@chakra-ui/react'
 import Subtitle from './Basics/Subtitle'
 import Form from './Basics/Form'
+import ItemBox from './Basics/ItemBox'
 import AddClass from './Professor/AddClass'
 import RemoveClass from './Professor/RemoveClass'
 import RemovableItem from './Basics/RemovableItem'
+import DeleteProfessor from './Professor/DeleteProfessor'
 import useStudent from './Student/hooks/useStudent'
 import useRemoveClass from './Professor/hooks/useRemoveClass'
 import { useState } from 'react'
-import ItemBox from './Basics/ItemBox'
-import DeleteProfessor from './Professor/DeleteProfessor'
+import { required } from '../constants/formErrors'
 
 const Student = () => {
     const params = useParams()
@@ -20,10 +21,10 @@ const Student = () => {
     const [isEditMode, setEditMode] = useState()
 
     const inputs = [
-        { name: 'surnames', label: 'Apellidos', type: 'text' },
-        { name: 'names', label: 'Nombres', type: 'text' },
-        { name: 'dni', label: 'DNI', type: 'number' },
-        { name: 'birthdate', label: 'Fecha de Nacimiento', type: 'date' },
+        { name: 'surnames', label: 'Apellidos', type: 'text', validations: { required } },
+        { name: 'names', label: 'Nombres', type: 'text', validations: { required } },
+        { name: 'dni', label: 'DNI', type: 'number', validations: { required } },
+        { name: 'birthdate', label: 'Fecha de Nacimiento', type: 'date', validations: { required } },
         { name: 'phone', label: 'Teléfono', type: 'text' },
         { name: 'address', label: 'Dirección', type: 'text' },
     ]
