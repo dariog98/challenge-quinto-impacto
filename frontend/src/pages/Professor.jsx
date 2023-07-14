@@ -8,13 +8,14 @@ import Form from './Basics/Form'
 import AddClass from './Professor/AddClass'
 import RemoveClass from './Professor/RemoveClass'
 import RemovableItem from './Basics/RemovableItem'
+import DeleteProfessor from './Professor/DeleteProfessor'
 import useProfessor from './Professor/hooks/useProfessor'
 import useRemoveClass from './Professor/hooks/useRemoveClass'
 import { useState } from 'react'
 
 const Professor = () => {
     const params = useParams()
-    const { loading, professor, editProfessor, addClassroom, removeClassroom } = useProfessor(params.id)
+    const { loading, professor, editProfessor, deleteProfessor, addClassroom, removeClassroom } = useProfessor(params.id)
     const { isOpen, handleOpen, handleClose, currentSelected } = useRemoveClass()
     const [isEditMode, setEditMode] = useState()
 
@@ -28,7 +29,7 @@ const Professor = () => {
     ]
 
     return (
-        <Box className='d-flex flex-column gap-1'>
+        <Box display='flex' flexDirection='column' gap='1rem'>
             {
                 professor
                 ? <>
@@ -58,6 +59,8 @@ const Professor = () => {
                             }
                         </Box>
                     </Box>
+
+                    <DeleteProfessor handleDelete={deleteProfessor}/>
                 </>
                 : <>
                 </>

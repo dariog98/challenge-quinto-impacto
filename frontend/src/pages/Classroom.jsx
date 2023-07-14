@@ -14,7 +14,7 @@ const Classroom = () => {
     const { classtimes } = useClasstimes()
 
     return (
-        <Box className='d-flex flex-column gap-1'>
+        <Box display='flex' flexDirection='column' gap='1rem'>
             {
                 classroom
                 ? <>

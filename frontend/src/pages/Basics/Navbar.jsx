@@ -1,12 +1,11 @@
 import { Link as ReachLink, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSchool, faChalkboardTeacher, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faSchool, faChalkboardTeacher, faUsers, faPowerOff } from '@fortawesome/free-solid-svg-icons'
 import { ROUTES } from '../../constants/Routes'
-import { Box, Text, Link } from '@chakra-ui/react'
+import { Box, Text, Link, Button } from '@chakra-ui/react'
 import { useUserContext } from './UserProvider'
 
-
-const Button = ({ route, title, icon }) => {
+const PagesButton = ({ route, title, icon }) => {
     const location = useLocation()
     const isActive = location.pathname === route
     
@@ -21,24 +20,25 @@ const Button = ({ route, title, icon }) => {
 }
 
 const Navbar = () => {
-    const { user } = useUserContext()
+    const { user, handleLogOut } = useUserContext()
 
     return (
         <Box display='flex' justifyContent='space-between' alignItems='center' h='5rem' borderBottomWidth='1px' p='0rem 2rem'>
             <Box display='flex' gap='3rem'>
-                <Button route={ROUTES.Classrooms} icon={faSchool} title='Clases'/>
-                <Button route={ROUTES.Professors} icon={faChalkboardTeacher} title='Profesores'/>
-                <Button route={ROUTES.Students} icon={faUsers} title='Alumnos'/>
+                <PagesButton route={ROUTES.Classrooms} icon={faSchool} title='Clases'/>
+                <PagesButton route={ROUTES.Professors} icon={faChalkboardTeacher} title='Profesores'/>
+                <PagesButton route={ROUTES.Students} icon={faUsers} title='Alumnos'/>
             </Box>
 
-            <Box>
-                {
-                    user &&
-                    <>
+            {
+                user &&
+                <Box display='flex' gap='0.5rem' alignItems='center'>
+                    <Box>
                         <Text>@{user.username}</Text>
-                    </>
-                }
-            </Box>
+                    </Box>
+                    <Button colorScheme='orange' onClick={handleLogOut}><FontAwesomeIcon icon={faPowerOff}/></Button>
+                </Box>
+            }
         </Box>
     )
 }

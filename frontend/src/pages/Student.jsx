@@ -10,10 +10,12 @@ import RemovableItem from './Basics/RemovableItem'
 import useStudent from './Student/hooks/useStudent'
 import useRemoveClass from './Professor/hooks/useRemoveClass'
 import { useState } from 'react'
+import ItemBox from './Basics/ItemBox'
+import DeleteProfessor from './Professor/DeleteProfessor'
 
 const Student = () => {
     const params = useParams()
-    const { loading, student, editStudent, addClassroom, removeClassroom } = useStudent(params.id)
+    const { loading, student, editStudent, deleteStudent, addClassroom, removeClassroom } = useStudent(params.id)
     const { isOpen, handleOpen, handleClose, currentSelected } = useRemoveClass()
     const [isEditMode, setEditMode] = useState()
 
@@ -27,7 +29,7 @@ const Student = () => {
     ]
 
     return (
-        <Box className='d-flex flex-column gap-1'>
+        <Box display='flex' flexDirection='column' gap='1rem'>
             {
                 student
                 ? <>
@@ -44,7 +46,8 @@ const Student = () => {
                         <Subtitle icon={faSchool} title='Clases'><AddClass handleSubmit={addClassroom}/></Subtitle>
                         <Box display='flex' flexDirection='column' gap='1rem'>
                             {
-                                student.classrooms.map(classroom =>
+                                student.classrooms.length
+                                ? student.classrooms.map(classroom =>
                                     <RemovableItem
                                         key={classroom.id}
                                         title={classroom.description}
@@ -52,9 +55,12 @@ const Student = () => {
                                         handleRemove={() => handleOpen(classroom.id)}
                                     />
                                 )
+                                : <ItemBox title='No se ha inscrito a ninguna clase'/>
                             }
                         </Box>
                     </Box>
+
+                    <DeleteProfessor handleDelete={deleteStudent}/>
                 </>
                 : <>
                 </>

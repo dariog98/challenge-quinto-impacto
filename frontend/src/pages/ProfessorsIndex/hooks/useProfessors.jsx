@@ -32,6 +32,32 @@ const useProfessors = () => {
         }
     }
 
+    const createProfessor = async (data) => {
+        try {
+            setLoading(true)
+
+            const config = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                },
+                body: JSON.stringify(data)
+            }
+
+            const response = await fetch(APIROUTES.Professors, config)
+            if (response.status === 200) {
+                getAllProfessors()
+            }
+            setLoading(false)
+            return response
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+        }
+    }
+
+
     useEffect(() => {
         getAllProfessors()
     }, [searchName])
@@ -39,7 +65,8 @@ const useProfessors = () => {
     return {
         loading,
         professors,
-        handleName: setSearchName
+        handleName: setSearchName,
+        createProfessor
     }
 }
 

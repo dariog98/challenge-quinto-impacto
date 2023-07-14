@@ -1,12 +1,13 @@
 import Navbar from './Navbar'
 import { Box, Container } from '@chakra-ui/react'
+import { Outlet } from 'react-router-dom'
 
-const WebContainer = ({ children }) => {
+const WebContainer = () => {
     return (
         <Box flexGrow='1'>
             <Navbar/>
-            <Container mt='1rem' maxW='container.md'>
-                {children}
+            <Container p='1rem' maxW='container.md'>
+                <Outlet/>
             </Container>
         </Box>
     )

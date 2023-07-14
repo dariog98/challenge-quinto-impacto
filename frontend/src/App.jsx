@@ -6,7 +6,7 @@ import { UserProvider } from './pages/Basics/UserProvider'
 const App = () => {
     return (
         <UserProvider>
-            <Box display='flex' w='100%' h='100vh' fontFamily='Ubuntu'>
+            <Box display='flex' w='100%' h='100vh'>
                 <RouterProvider router={router}/>
             </Box>
         </UserProvider>

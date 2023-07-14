@@ -51,6 +51,26 @@ const useProfessor = (idProfessor) => {
         }
     }
 
+    const deleteProfessor = async () => {
+        try {
+            //setLoading(true)
+            const config = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            }
+
+            const response = await fetch(`${APIROUTES.Professors}/${idProfessor}`, config)
+            //setLoading(false)
+            return response
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+        }
+    }
+
     const addClassroom = async (idClassroom) => {
         try {
             //setLoading(true)
@@ -106,6 +126,7 @@ const useProfessor = (idProfessor) => {
         loading,
         professor,
         editProfessor,
+        deleteProfessor,
         addClassroom,
         removeClassroom
     }

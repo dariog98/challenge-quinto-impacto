@@ -52,6 +52,26 @@ const useStudent = (idStudent) => {
         }
     }
 
+    const deleteStudent = async () => {
+        try {
+            //setLoading(true)
+            const config = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            }
+
+            const response = await fetch(`${APIROUTES.Students}/${idStudent}`, config)
+            //setLoading(false)
+            return response
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+        }
+    }
+
     const addClassroom = async (idClassroom) => {
         try {
             //setLoading(true)
@@ -107,6 +127,7 @@ const useStudent = (idStudent) => {
         loading,
         student,
         editStudent,
+        deleteStudent,
         addClassroom,
         removeClassroom
     }

@@ -57,28 +57,33 @@ const router = createBrowserRouter([
                 element: <ProtectedUserRoute/>,
                 children: [
                     {
-                        path: ROUTES.Classrooms,
-                        element: <WebContainer><ClassroomsIndex/></WebContainer>,
-                    },
-                    {
-                        path: ROUTES.Professors,
-                        element: <WebContainer><ProfessorsIndex/></WebContainer>,
-                    },
-                    {
-                        path: ROUTES.Students,
-                        element: <WebContainer><StudentsIndex/></WebContainer>,
-                    },
-                    {
-                        path: `${ROUTES.Classrooms}/:id`,
-                        element: <WebContainer><Classroom/></WebContainer>,
-                    },
-                    {
-                        path: `${ROUTES.Students}/:id`,
-                        element: <WebContainer><Student/></WebContainer>,
-                    },
-                    {
-                        path: `${ROUTES.Professors}/:id`,
-                        element: <WebContainer><Professor/></WebContainer>,
+                        element: <WebContainer/>,
+                        children: [
+                            {
+                                path: ROUTES.Classrooms,
+                                element: <ClassroomsIndex/>,
+                            },
+                            {
+                                path: ROUTES.Professors,
+                                element: <ProfessorsIndex/>,
+                            },
+                            {
+                                path: ROUTES.Students,
+                                element: <StudentsIndex/>,
+                            },
+                            {
+                                path: `${ROUTES.Classrooms}/:id`,
+                                element: <Classroom/>,
+                            },
+                            {
+                                path: `${ROUTES.Students}/:id`,
+                                element: <Student/>,
+                            },
+                            {
+                                path: `${ROUTES.Professors}/:id`,
+                                element: <Professor/>,
+                            }
+                        ]
                     }
                 ]
             },
