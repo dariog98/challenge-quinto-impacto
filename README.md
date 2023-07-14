@@ -22,12 +22,12 @@ Route:
 Response Body: `ON SUCCESS`
 ```json
 {
-    data: {
+    "data": {
         "username": "nombre_de_usuario"
         "token": "token_de_acceso_del_usuario"
     },
-    status: "codigo_de_status",
-    message: "mensaje_de_error_o_confirmación"
+    "status": "codigo_de_status",
+    "message": "mensaje_de_error_o_confirmación"
 }
 ```
 
@@ -57,12 +57,12 @@ Route:
 Response Body: `ON SUCCESS`
 ```json
 {
-    data: {
+    "data": {
         "username": "nombre_de_usuario"
         "token": "token_de_acceso_del_usuario"
     },
-    status: "codigo_de_status",
-    message: "mensaje_de_error_o_confirmación"
+    "status": "codigo_de_status",
+    "message": "mensaje_de_error_o_confirmación"
 }
 ```
 
